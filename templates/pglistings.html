@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PG Listings</title>
+  <!-- Include your CSS and other meta tags here -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+    /* Your additional CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Center the content */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Add spacing between elements */
+    .form-group {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  {% include 'nav.html'%}
+  <!-- Your navigation bar code here -->
+
+  <div class="container">
+    <h1 class="text-center mt-4 mb-2">PG Listings</h1>
+    
+
+    <!-- Housing Option 1 -->
+    <div class="listing">
+      <h2 class="text-center">Housing Option 1</h2>
+      <p><strong>Address:</strong> 123 Main Street</p>
+      <p><strong>City:</strong> Example City</p>
+      <p><strong>Crime Rate:</strong> Low</p>
+      <p><strong>Crowd Meter:</strong> Medium</p>
+      <!-- Add more details as needed -->
+
+      <!-- Rest of the details for Housing Option 1 -->
+
+      <!-- User Reviews Form for Housing Option 1 -->
+      <h3 class="text-center mt-4 mb-2">User Reviews Form</h3>
+      <form name="submitform" method="post">
+        <div class="form-group">
+          <label for="review_1">Write Your Review (Maximum 70-80 words):</label>
+          <textarea id="review_1" name="user_review" rows="4" cols="50" maxlength="200" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="rating_1">Rate the PG Housing:</label>
+          <select id="rating_1" name="pg_rating" required>
+            <option value="" disabled selected>Select rating</option>
+            <option value="1">1 - Poor</option>
+            <option value="2">2 - Average</option>
+            <option value="3">3 - Good</option>
+            <option value="4">4 - Very Good</option>
+            <option value="5">5 - Excellent</option>
+          </select>
+        </div>
+
+        <div class="form-group text-center">
+<button type="submit" class="btn btn-primary" onclick="viewReview()">Submit Review</button>
+          <br><br> 
+<button type="button" class="btn btn-primary" onclick="redirectToPage()">View Review</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Housing Option 2 -->
+    <div class="listing">
+      <h2 class="text-center">Housing Option 2</h2>
+      <p><strong>Address:</strong> 456 Elm Street</p>
+      <p><strong>City:</strong> Another City</p>
+      <p><strong>Crime Rate:</strong> Medium</p>
+      <p><strong>Crowd Meter:</strong> High</p>
+      <!-- Add more details as needed -->
+
+      <!-- Rest of the details for Housing Option 2 -->
+
+      <!-- User Reviews Form for Housing Option 2 -->
+      <h3 class="text-center mt-4 mb-2">User Reviews Form</h3>
+      <form onsubmit="submitReview(2); return false;">
+        <div class="form-group">
+          <label for="review_2">Write Your Review (Maximum 200 characters):</label>
+          <textarea id="review_2" name="user_review" rows="4" cols="50" maxlength="200" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="rating_2">Rate the PG Housing:</label>
+          <select id="rating_2" name="pg_rating" required>
+            <option value="" disabled selected>Select rating</option>
+            <option value="1">1 - Poor</option>
+            <option value="2">2 - Average</option>
+            <option value="3">3 - Good</option>
+            <option value="4">4 - Very Good</option>
+            <option value="5">5 - Excellent</option>
+          </select>
+        </div>
+
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary">Submit Review</button>
+          <button type="submit" class="btn btn-primary">View Review</button>
+        </div>
+      </form>
+    </div>
+
+
+  <script>
+        function viewReview() {
+            const reviewText = document.getElementById('review_1').value;
+            const rating = document.getElementById('rating_1').value;
+            const formData = {
+                "txt": reviewText,
+                "username":"sam",
+                "pg_rating": rating
+            };
+              const apiEndpoint = '/review/postreview';
+
+            fetch(apiEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+             
+                console.log(data);
+            })
+            .catch(error => {
+               
+                console.error('Error:', error);
+            });
+        }
+    function redirectToPage() {
+            const targetPageUrl = '/results';
+            window.location.href = targetPageUrl;
+        }
+    </script>
+  
+</body>
+</html>

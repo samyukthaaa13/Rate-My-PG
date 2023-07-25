@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Response Example</title>
+</head>
+<body>
+    <div class="container">
+     <h1 class="text-center mt-4 mb-4">Review for housing 1</h1>
+      <div id="apiData"></div>
+
+    <script>
+        function fetchApiData() {
+            // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint URL
+            const apiEndpoint = '/review/listreview';
+
+            // Send a GET request to the API
+            fetch(apiEndpoint)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json(); // Parse the response body as JSON
+                })
+                .then(data => {
+                    // Handle the API response data here
+                    displayData(data);
+                })
+                .catch(error => {
+                    // Handle errors here
+                    console.error('Error:', error);
+                });
+        }
+
+        function displayData(data) {
+            // Access and display the data on the webpage
+            const apiDataDiv = document.getElementById('apiData');
+            apiDataDiv.innerHTML = JSON.stringify(data, null, 2);
+        }
+
+        // Call the function to fetch and display the API data
+        fetchApiData();
+    </script>
+</body>
+</html>

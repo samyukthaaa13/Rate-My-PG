@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .page-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .left-side,
+        .right-side {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .left-side {
+            display: flex;
+            align-items: center;
+        }
+
+        .left-side .email {
+            text-align: center;
+        }
+
+        .left-side .topic {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .left-side .text-one,
+        .left-side .text-two {
+            margin-top: 5px;
+            color: #666;
+        }
+
+        .right-side .topic-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .right-side p {
+            color: #666;
+        }
+
+        .right-side form {
+            margin-top: 20px;
+        }
+
+        .input-box {
+            margin-bottom: 15px;
+        }
+
+        .input-box input,
+        .input-box textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .message-box textarea {
+            height: 150px;
+        }
+
+        .button {
+            text-align: center;
+        }
+
+        .button button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-center">
+        <div class="container">
+            <div class="content">
+                <div class="left-side">
+                    <div class="email details">
+                        <i class="fas fa-envelope"></i>
+                        <div class="topic">Email</div>
+                        <div class="text-one">codinglab@gmail.com</div>
+                        <div class="text-two">info.codinglab@gmail.com</div>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div class="topic-text">Send us a message</div>
+                    <p>We value your questions and feedback regarding our website. Please feel free to contact us for any inquiries or suggestions you may have.</p>
+                    <form action="#">
+                        <div class="input-box">
+                            <input type="text" placeholder="Enter your name" />
+                        </div>
+                        <div class="input-box">
+                            <input type="text" placeholder="Enter your email" />
+                        </div>
+                        <div class="input-box message-box">
+                            <textarea placeholder="Enter your message"></textarea>
+                        </div>
+                        <div class="button">
+                            <button type="submit">Send Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

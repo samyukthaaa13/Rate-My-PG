@@ -7,6 +7,9 @@ authors = ["Your Name <you@example.com>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 Flask = "^2.3.2"
+nltk = "^3.8.1"
+matplotlib = "^3.7.2"
+wordcloud = "^1.9.2"
 
 [tool.poetry.dev-dependencies]
 
